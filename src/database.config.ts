@@ -1,10 +1,11 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import * as process from 'process';
 
 const configLoaded: TypeOrmModuleOptions = {
   type: 'sqlite',
-  database: ':memory:',
+  database: process.env.NODE_ENV === 'test' ? ':memory:' : 'database.sqlite',
   synchronize: true,
-  dropSchema: true,
+  dropSchema: process.env.NODE_ENV === 'test',
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
 };
 

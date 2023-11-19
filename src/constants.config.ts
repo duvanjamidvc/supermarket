@@ -1,9 +1,9 @@
-// version
 export class AppConstants {
-  public static readonly API_VERSION = '1';
-  public static readonly API_PREFIX = 'api';
-  public static readonly API_NAME = 'Supermarket API';
-  public static readonly API_DESCRIPTION =
+  static readonly API_VERSION: string = '1';
+  static readonly API_PREFIX: string = 'api/v';
+  static readonly API_NAME: string = 'Supermarket API';
+  static readonly API_DESCRIPTION: string =
     'API para la consulta de la oferta de supermercados en las ciudades';
-  public static readonly API_DEFAULT_SWAGGER = 'docs';
+  static readonly API_DEFAULT_SWAGGER: string = 'docs';
+  static API_PORT: number = parseInt(process.env.PORT) || 3000;
 }

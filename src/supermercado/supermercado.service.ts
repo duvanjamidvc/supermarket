@@ -1,26 +1,80 @@
-import { Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateSupermercadoDto } from './dto/create-supermercado.dto';
-import { UpdateSupermercadoDto } from './dto/update-supermercado.dto';
+import { Supermercado } from './entities/supermercado.entity';
+import { BusinessException } from '../exceptions/business.exception';
 
 @Injectable()
 export class SupermercadoService {
-  create(createSupermercadoDto: CreateSupermercadoDto) {
-    return 'This action adds a new supermercado';
+  constructor(
+    @InjectRepository(Supermercado)
+    private supermercadoRepository: Repository<Supermercado>,
+  ) {}
+
+  async create(
+    createSupermercadoDto: CreateSupermercadoDto,
+  ): Promise<Supermercado> {
+    // Valida que el nombre del supermercado tenga más de 10 caracteres
+    if (createSupermercadoDto.nombre.length <= 10) {
+      throw new BusinessException(
+        'El nombre del supermercado debe tener más de 10 caracteres.',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    const nuevoSupermercado = this.supermercadoRepository.create(
+      createSupermercadoDto,
+    );
+    return await this.supermercadoRepository.save(nuevoSupermercado);
   }
 
-  findAll() {
-    return `This action returns all supermecado`;
+  async findAll(): Promise<Supermercado[]> {
+    return await this.supermercadoRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} supermecado`;
+  async findOne(id: number): Promise<Supermercado> {
+    const supermercado = await this.supermercadoRepository.findOne({
+      relations: ['ciudades'],
+      where: { id: id },
+    });
+    if (!supermercado) {
+      throw new NotFoundException(`Supermercado con ID ${id} no encontrado.`);
+    }
+    return supermercado;
   }
 
-  update(id: number, updateSupermercadoDto: UpdateSupermercadoDto) {
-    return `This action updates a #${id} supermecado`;
+  async update(
+    id: number,
+    updateSupermercadoDto: CreateSupermercadoDto,
+  ): Promise<Supermercado> {
+    // Valida que el nombre del supermercado tenga más de 10 caracteres
+    if (updateSupermercadoDto.nombre.length <= 10) {
+      throw new BusinessException(
+        'El nombre del supermercado debe tener más de 10 caracteres.',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    const supermercado = await this.supermercadoRepository.findOne({
+      relations: ['ciudades'],
+      where: { id: id },
+    });
+    if (!supermercado) {
+      throw new NotFoundException(`Supermercado con ID ${id} no encontrado.`);
+    }
+
+    this.supermercadoRepository.merge(supermercado, updateSupermercadoDto);
+    return await this.supermercadoRepository.save(supermercado);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} supermecado`;
+  async delete(id: number): Promise<void> {
+    const supermercado = await this.supermercadoRepository.findOne({
+      where: { id: id },
+    });
+    if (!supermercado) {
+      throw new NotFoundException(`Supermercado con ID ${id} no encontrado.`);
+    }
+    await this.supermercadoRepository.remove(supermercado);
   }
 }

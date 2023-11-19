@@ -6,19 +6,16 @@ import { AppConstants } from '../constants.config';
 export class SwaggerConfigModule {
   static setup(app) {
     const options = new DocumentBuilder()
-      .setTitle('Supermarket API')
-      .setDescription(
-        `API para la consulta de la oferta de supermercados en las ciudades`,
-      )
-      .setVersion('latest')
-      .addBearerAuth()
+      .setTitle(AppConstants.API_NAME)
+      .setDescription(AppConstants.API_DESCRIPTION)
+      .setVersion(`Version: ${AppConstants.API_VERSION}`)
+      .addServer(`http://localhost:3000`, 'Local server')
+      .addTag('Ciudad', 'Gestión de ciudades')
+      .addTag('Ciudad - Supermercado', 'Gestión de supermercados por ciudad ')
+      .addTag('Supermercado', 'Gestión de supermercados')
       .build();
 
     const document = SwaggerModule.createDocument(app, options);
-    SwaggerModule.setup(
-      `${AppConstants.API_PREFIX}/v${AppConstants.API_VERSION}/docs`,
-      app,
-      document,
-    );
+    SwaggerModule.setup(`/${AppConstants.API_DEFAULT_SWAGGER}`, app, document);
   }
 }

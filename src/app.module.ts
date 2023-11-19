@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { CiudadModule } from './ciudad/ciudad.module';
 import { SupermecadoModule } from './supermercado/supermecado.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -18,7 +16,7 @@ import { DatabaseConfig } from './database.config';
     CiudadModule,
     SupermecadoModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
