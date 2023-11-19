@@ -1,0 +1,2047 @@
+{
+	"info": {
+		"_postman_id": "760bccd6-3004-48d9-85d2-9f696d9b6f16",
+		"name": "Supermarket API",
+		"description": "API para la consulta de la oferta de supermercados en las ciudades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23864991",
+		"_collection_link": "https://galactic-astronaut-467655.postman.co/workspace/ABC-JOBS~ba98451d-06c5-4dc2-838e-4db17501dd58/collection/23864991-760bccd6-3004-48d9-85d2-9f696d9b6f16?action=share&source=collection_link&creator=23864991"
+	},
+	"item": [
+		{
+			"name": "Ciudades",
+			"item": [
+				{
+					"name": "Ciudad Controller create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Ciudad de la plata\",\n  \"pais\": \"Argentina\",\n  \"numeroHabitantes\": 1000000\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crea una nueva ciudad",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Ciudad de la plata\",\n  \"pais\": \"Argentina\",\n  \"numeroHabitantes\": 1000000\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"nombre\": \"Ciudad del Cairo\",\n  \"pais\": \"Egipto\",\n  \"numeroHabitantes\": 1000000,\n  \"supermercados\": [\n    {\n      \"id\": 1,\n      \"nombre\": \"Supermercado Ejemplo\",\n      \"longitud\": 123.456789,\n      \"latitud\": 45.678901,\n      \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n      \"ciudades\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": 1,\n      \"nombre\": \"Supermercado Ejemplo\",\n      \"longitud\": 123.456789,\n      \"latitud\": 45.678901,\n      \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n      \"ciudades\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        }\n      ]\n    }\n  ]\n}"
+						},
+						{
+							"name": "Datos de entrada inválidos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Ciudad de la plata\",\n  \"pais\": \"Argentina\",\n  \"numeroHabitantes\": 1000000\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ciudad Controller find All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtiene todas las ciudades",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": 1,\n    \"nombre\": \"Ciudad del Cairo\",\n    \"pais\": \"Egipto\",\n    \"numeroHabitantes\": 1000000,\n    \"supermercados\": [\n      {\n        \"id\": 1,\n        \"nombre\": \"Supermercado Ejemplo\",\n        \"longitud\": 123.456789,\n        \"latitud\": 45.678901,\n        \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n        \"ciudades\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n          }\n        ]\n      },\n      {\n        \"id\": 1,\n        \"nombre\": \"Supermercado Ejemplo\",\n        \"longitud\": 123.456789,\n        \"latitud\": 45.678901,\n        \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n        \"ciudades\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": 1,\n    \"nombre\": \"Ciudad del Cairo\",\n    \"pais\": \"Egipto\",\n    \"numeroHabitantes\": 1000000,\n    \"supermercados\": [\n      {\n        \"id\": 1,\n        \"nombre\": \"Supermercado Ejemplo\",\n        \"longitud\": 123.456789,\n        \"latitud\": 45.678901,\n        \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n        \"ciudades\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n          }\n        ]\n      },\n      {\n        \"id\": 1,\n        \"nombre\": \"Supermercado Ejemplo\",\n        \"longitud\": 123.456789,\n        \"latitud\": 45.678901,\n        \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n        \"ciudades\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n          }\n        ]\n      }\n    ]\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ciudad Controller find One",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtiene una ciudad por su ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"nombre\": \"Ciudad del Cairo\",\n  \"pais\": \"Egipto\",\n  \"numeroHabitantes\": 1000000,\n  \"supermercados\": [\n    {\n      \"id\": 1,\n      \"nombre\": \"Supermercado Ejemplo\",\n      \"longitud\": 123.456789,\n      \"latitud\": 45.678901,\n      \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n      \"ciudades\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": 1,\n      \"nombre\": \"Supermercado Ejemplo\",\n      \"longitud\": 123.456789,\n      \"latitud\": 45.678901,\n      \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n      \"ciudades\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        }\n      ]\n    }\n  ]\n}"
+						},
+						{
+							"name": "Ciudad no encontrada",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ciudad Controller update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Ciudad de la plata\",\n  \"pais\": \"Argentina\",\n  \"numeroHabitantes\": 1000000\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualiza una ciudad por su ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Ciudad de la plata\",\n  \"pais\": \"Argentina\",\n  \"numeroHabitantes\": 1000000\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"nombre\": \"Ciudad del Cairo\",\n  \"pais\": \"Egipto\",\n  \"numeroHabitantes\": 1000000,\n  \"supermercados\": [\n    {\n      \"id\": 1,\n      \"nombre\": \"Supermercado Ejemplo\",\n      \"longitud\": 123.456789,\n      \"latitud\": 45.678901,\n      \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n      \"ciudades\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": 1,\n      \"nombre\": \"Supermercado Ejemplo\",\n      \"longitud\": 123.456789,\n      \"latitud\": 45.678901,\n      \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n      \"ciudades\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        }\n      ]\n    }\n  ]\n}"
+						},
+						{
+							"name": "Datos de entrada inválidos",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Ciudad de la plata\",\n  \"pais\": \"Argentina\",\n  \"numeroHabitantes\": 1000000\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						},
+						{
+							"name": "Ciudad no encontrada",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Ciudad de la plata\",\n  \"pais\": \"Argentina\",\n  \"numeroHabitantes\": 1000000\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ciudad Controller delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Elimina una ciudad por su ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Ciudad no encontrada",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Gestión de ciudades"
+		},
+		{
+			"name": "Ciudad - Supermercado",
+			"item": [
+				{
+					"name": "Ciudad Supermecado Controller add Supermarket To City",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities",
+								":cityId",
+								"supermarkets",
+								":supermarketId"
+							],
+							"variable": [
+								{
+									"key": "cityId",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								},
+								{
+									"key": "supermarketId",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Supermercado añadido exitosamente a la ciudad",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"nombre\": \"Ciudad del Cairo\",\n  \"pais\": \"Egipto\",\n  \"numeroHabitantes\": 1000000,\n  \"supermercados\": [\n    {\n      \"id\": 1,\n      \"nombre\": \"Supermercado Ejemplo\",\n      \"longitud\": 123.456789,\n      \"latitud\": 45.678901,\n      \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n      \"ciudades\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": 1,\n      \"nombre\": \"Supermercado Ejemplo\",\n      \"longitud\": 123.456789,\n      \"latitud\": 45.678901,\n      \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n      \"ciudades\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n        }\n      ]\n    }\n  ]\n}"
+						},
+						{
+							"name": "Datos de entrada inválidos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						},
+						{
+							"name": "Supermercado No existe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ciudad Supermecado Controller find Supermarket From City",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities",
+								":cityId",
+								"supermarkets",
+								":supermarketId"
+							],
+							"variable": [
+								{
+									"key": "cityId",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								},
+								{
+									"key": "supermarketId",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtiene un supermercado específico de la ciudad por su ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"nombre\": \"Supermercado Ejemplo\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n  \"ciudades\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Supermercado o Ciudad no encontrado",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ciudad Supermecado Controller update Supermarkets From City",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"supermercadoId\": []\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities",
+								":cityId",
+								"supermarkets",
+								":supermarketId"
+							],
+							"variable": [
+								{
+									"key": "cityId",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								},
+								{
+									"key": "supermarketId"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualiza los supermercados de la ciudad",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"supermercadoId\": []\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"nombre\": \"Supermercado Ejemplo\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n  \"ciudades\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Datos de entrada inválidos",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"supermercadoId\": []\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						},
+						{
+							"name": "Ciudad no encontrada",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"supermercadoId\": []\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						},
+						{
+							"name": "Supermercado No existe",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"supermercadoId\": []\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ciudad Supermecado Controller delete Supermarket From City",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities",
+								":cityId",
+								"supermarkets",
+								":supermarketId"
+							],
+							"variable": [
+								{
+									"key": "cityId",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								},
+								{
+									"key": "supermarketId",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Supermercado eliminado exitosamente de la ciudad",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Supermercado no encontrado",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets/:supermarketId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets",
+										":supermarketId"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										},
+										{
+											"key": "supermarketId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Ciudad Supermecado Controller find Supermarkets From City",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cities",
+								":cityId",
+								"supermarkets"
+							],
+							"variable": [
+								{
+									"key": "cityId",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtiene todos los supermercados de la ciudad",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/cities/:cityId/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cities",
+										":cityId",
+										"supermarkets"
+									],
+									"variable": [
+										{
+											"key": "cityId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": 1,\n    \"nombre\": \"Supermercado Ejemplo\",\n    \"longitud\": 123.456789,\n    \"latitud\": 45.678901,\n    \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n    \"ciudades\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n      }\n    ]\n  },\n  {\n    \"id\": 1,\n    \"nombre\": \"Supermercado Ejemplo\",\n    \"longitud\": 123.456789,\n    \"latitud\": 45.678901,\n    \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n    \"ciudades\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n      }\n    ]\n  }\n]"
+						}
+					]
+				}
+			],
+			"description": "Gestión de supermercados por ciudad "
+		},
+		{
+			"name": "Supermercados",
+			"item": [
+				{
+					"name": "Supermercado Controller create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Supermercado Don Chucho\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercado-don-chucho.com\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"supermarkets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crea un nuevo supermercado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Supermercado Don Chucho\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercado-don-chucho.com\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"nombre\": \"Supermercado Ejemplo\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n  \"ciudades\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Datos de entrada inválidos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Supermercado Don Chucho\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercado-don-chucho.com\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Supermercado Controller find All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"supermarkets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtiene todos los supermercados",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": 1,\n    \"nombre\": \"Supermercado Ejemplo\",\n    \"longitud\": 123.456789,\n    \"latitud\": 45.678901,\n    \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n    \"ciudades\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n      }\n    ]\n  },\n  {\n    \"id\": 1,\n    \"nombre\": \"Supermercado Ejemplo\",\n    \"longitud\": 123.456789,\n    \"latitud\": 45.678901,\n    \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n    \"ciudades\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n      }\n    ]\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Supermercado Controller find One",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"supermarkets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtiene un supermercado por su ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"nombre\": \"Supermercado Ejemplo\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n  \"ciudades\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Supermercado no encontrado",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Supermercado Controller update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Supermercado Don Chucho\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercado-don-chucho.com\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"supermarkets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualiza un supermercado por su ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Supermercado Don Chucho\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercado-don-chucho.com\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": 1,\n  \"nombre\": \"Supermercado Ejemplo\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercadoejemplo.com\",\n  \"ciudades\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/Ciudad detected>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Datos de entrada inválidos",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Supermercado Don Chucho\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercado-don-chucho.com\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						},
+						{
+							"name": "Supermercado no encontrado",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Supermercado Don Chucho\",\n  \"longitud\": 123.456789,\n  \"latitud\": 45.678901,\n  \"paginaWeb\": \"https://www.supermercado-don-chucho.com\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Supermercado Controller delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"supermarkets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "velit elit sunt",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Elimina un supermercado por su ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Supermercado no encontrado",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/supermarkets/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"supermarkets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"statusCode\": 404,\n  \"error\": \"Not Found \",\n  \"message\": \"Longitud del campo invalida / ID no encontrado\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Gestión de supermercados"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		}
+	]
+}

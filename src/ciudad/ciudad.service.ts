@@ -33,7 +33,10 @@ export class CiudadService {
   }
 
   async findOne(id: number): Promise<Ciudad> {
-    const ciudad = await this.ciudadRepository.findOne({ where: { id: id } });
+    const ciudad = await this.ciudadRepository.findOne({
+      where: { id: id },
+      relations: ['supermercados'],
+    });
     if (!ciudad) {
       throw new NotFoundException(`Ciudad con ID ${id} no encontrada.`);
     }
@@ -50,7 +53,10 @@ export class CiudadService {
       return null;
     }
 
-    const ciudad = await this.ciudadRepository.findOne({ where: { id: id } });
+    const ciudad = await this.ciudadRepository.findOne({
+      where: { id: id },
+      relations: ['supermercados'],
+    });
     if (!ciudad) {
       throw new NotFoundException(`Ciudad con ID ${id} no encontrada.`);
     }
