@@ -21,9 +21,14 @@ project-root
 
 # Paso a Paso: Ejecución del Proyecto Nest.js y Pruebas
 
-Aquí tienes los pasos detallados para ejecutar el proyecto Nest.js y ejecutar las pruebas:
+Este proyecto Nest.js proporciona una API con funcionalidades específicas. A continuación, se detallan los pasos para iniciar la aplicación y acceder a la API y
+la documentación en Swagger.
 
-## Ejecutar el Proyecto Nest.js
+## Iniciar la Aplicación
+
+### Requisitos
+
+- Node.js 18 o superior
 
 1. **Instalación de Dependencias:**
    Asegúrate de tener Node.js y npm instalados en tu sistema. Luego, ejecuta el siguiente comando en la raíz del proyecto para instalar las dependencias:
@@ -32,43 +37,42 @@ Aquí tienes los pasos detallados para ejecutar el proyecto Nest.js y ejecutar l
    npm install
    ```
 
-2. **Configuración de la Base de Datos:**
-   Si el proyecto utiliza una base de datos, asegúrate de tenerla configurada y en ejecución. Consulta la documentación del proyecto para obtener detalles
-   específicos sobre la configuración de la base de datos.
-
-3. **Entorno de Desarrollo:**
-   Para ejecutar el proyecto en un entorno de desarrollo, utiliza el siguiente comando:
+2. **Iniciar la Aplicación:**
+   Ejecuta el siguiente comando para iniciar la aplicación:
 
    ```bash
-   npm run start:dev
+   npm start
    ```
 
-   Esto iniciará el servidor Nest.js en modo de desarrollo. Puedes acceder a la aplicación desde tu navegador ingresando
-   a [http://localhost:3000](http://localhost:3000) u al puerto que hayas configurado.
+   Al iniciarse, verás un mensaje similar al siguiente:
+
+   ```bash
+    DEBUG [Main] >>> Application is running on: http://localhost:3000/api/v1
+    DEBUG [Main] >>> Application documentation running on: http://localhost:3000/docs
+   ```
+
+3. **Acceder a la API:**
+   La API estará disponible en [http://localhost:3000/api/v1](http://localhost:3000/api/v1).
+
+4. **Acceder a la Documentación en Swagger:**
+   La documentación en Swagger estará disponible en [http://localhost:3000/docs](http://localhost:3000/docs). Esta interfaz proporciona una descripción
+   detallada de los endpoints, parámetros y respuestas de la API.
 
 ## Ejecutar Pruebas
 
-### Pruebas Unitarias
+Para ejecutar las pruebas unitarias, puedes utilizar el siguiente comando:
 
-1. **Ejecutar Pruebas Unitarias:**
-   Para ejecutar las pruebas unitarias, utiliza el siguiente comando:
+```bash
+npm test
+```
 
-   ```bash
-   npm run test
-   ```
+Este comando ejecutará las pruebas y mostrará los resultados en la consola.
 
-   Este comando ejecutará las pruebas unitarias del proyecto y mostrará los resultados en la consola.
+Para generar un informe de cobertura, puedes utilizar:
 
-### Pruebas de Cobertura
+```bash
+npm run test:cov
+```
 
-1. **Generar Informe de Cobertura:**
-   Si deseas obtener un informe de cobertura, puedes ejecutar el siguiente comando:
+Esto generará un informe detallado en el directorio `coverage`.
 
-   ```bash
-   npm run test:cov
-   ```
-
-   Esto generará un informe detallado de la cobertura de las pruebas en el directorio `coverage`.
-
-Recuerda que estos son pasos generales y pueden variar según la configuración específica del proyecto Nest.js que estás utilizando. Consulta la documentación
-del proyecto para obtener información más detallada sobre la configuración y ejecución de pruebas.
