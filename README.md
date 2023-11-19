@@ -1,73 +1,74 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Entregable - Parcial Práctico
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Estructura del Proyecto
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Dentro del proyecto de Nest.js, se ha creado una carpeta denominada `collections`. Esta carpeta contiene las colecciones requeridas para la aplicación.
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+```plaintext
+project-root
+│
+├── collections (Colecciones de Postman para test)
+│   └── ...
+│
+├── openapi ( Definición de la API) 
+│   └── ...
+├── src
+│   ├── ...
+│   └── (resto de la estructura del proyecto)
+│
+└── ...
 ```
 
-## Running the app
+# Paso a Paso: Ejecución del Proyecto Nest.js y Pruebas
 
-```bash
-# development
-$ npm run start
+Aquí tienes los pasos detallados para ejecutar el proyecto Nest.js y ejecutar las pruebas:
 
-# watch mode
-$ npm run start:dev
+## Ejecutar el Proyecto Nest.js
 
-# production mode
-$ npm run start:prod
-```
+1. **Instalación de Dependencias:**
+   Asegúrate de tener Node.js y npm instalados en tu sistema. Luego, ejecuta el siguiente comando en la raíz del proyecto para instalar las dependencias:
 
-## Test
+   ```bash
+   npm install
+   ```
 
-```bash
-# unit tests
-$ npm run test
+2. **Configuración de la Base de Datos:**
+   Si el proyecto utiliza una base de datos, asegúrate de tenerla configurada y en ejecución. Consulta la documentación del proyecto para obtener detalles
+   específicos sobre la configuración de la base de datos.
 
-# e2e tests
-$ npm run test:e2e
+3. **Entorno de Desarrollo:**
+   Para ejecutar el proyecto en un entorno de desarrollo, utiliza el siguiente comando:
 
-# test coverage
-$ npm run test:cov
-```
+   ```bash
+   npm run start:dev
+   ```
 
-## Support
+   Esto iniciará el servidor Nest.js en modo de desarrollo. Puedes acceder a la aplicación desde tu navegador ingresando
+   a [http://localhost:3000](http://localhost:3000) u al puerto que hayas configurado.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Ejecutar Pruebas
 
-## Stay in touch
+### Pruebas Unitarias
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+1. **Ejecutar Pruebas Unitarias:**
+   Para ejecutar las pruebas unitarias, utiliza el siguiente comando:
 
-## License
+   ```bash
+   npm run test
+   ```
 
-Nest is [MIT licensed](LICENSE).
+   Este comando ejecutará las pruebas unitarias del proyecto y mostrará los resultados en la consola.
+
+### Pruebas de Cobertura
+
+1. **Generar Informe de Cobertura:**
+   Si deseas obtener un informe de cobertura, puedes ejecutar el siguiente comando:
+
+   ```bash
+   npm run test:cov
+   ```
+
+   Esto generará un informe detallado de la cobertura de las pruebas en el directorio `coverage`.
+
+Recuerda que estos son pasos generales y pueden variar según la configuración específica del proyecto Nest.js que estás utilizando. Consulta la documentación
+del proyecto para obtener información más detallada sobre la configuración y ejecución de pruebas.
